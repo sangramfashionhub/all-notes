@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Notes Hub</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: green;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.section {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Engineering | MPSC | SSC<br>By Sarthak Takmoge 📚</h1>
+
+<!-- HOME -->
+<div id="home" class="active">
+  <div class="container">
+    <div class="card">
+      <h2>Engineering</h2>
+      <button onclick="showSection('eng')">Open</button>
+    </div>
+
+    <div class="card">
+      <h2>MPSC</h2>
+      <button onclick="showSection('mpsc')">Open</button>
+    </div>
+
+    <div class="card">
+      <h2>SSC</h2>
+      <button onclick="showSection('ssc')">Open</button>
+    </div>
+  </div>
+</div>
+
+<!-- ENGINEERING -->
+<div id="eng" class="section">
+  <h1>Engineering Notes</h1>
+  <div class="container">
+
+    <div class="card">
+      <h3>ECM Unit 1 Notes</h3>
+      <p>₹10</p>
+
+      <!-- PAYMENT -->
+      <a href="upi://pay?pa=9923343791@ybl&pn=Sarthak&am=10&cu=INR">
+        <button onclick="sendWhatsApp('ECM Notes')">Pay ₹10</button>
+      </a>
+
+      <p>After payment, enter password to download</p>
+
+      <!-- PASSWORD DOWNLOAD -->
+      <br>
+      <button onclick="unlockPDF()">🔓 Download PDF</button>
+
+    </div>
+
+  </div>
+  <center><button onclick="goHome()">Back</button></center>
+</div>
+
+<!-- MPSC -->
+<div id="mpsc" class="section">
+  <h1>MPSC Notes</h1>
+  <center><button onclick="goHome()">Back</button></center>
+</div>
+
+<!-- SSC -->
+<div id="ssc" class="section">
+  <h1>SSC Notes</h1>
+  <center><button onclick="goHome()">Back</button></center>
+</div>
+
+<!-- WhatsApp -->
+<div class="whatsapp">
+  <a href="https://wa.me/919923343791" target="_blank">
+    <button style="background:#25D366;">Chat</button>
+  </a>
+</div>
+
+<script>
+function showSection(id) {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById(id).style.display = 'block';
+}
+
+function goHome() {
+  document.getElementById('home').style.display = 'block';
+  document.getElementById('eng').style.display = 'none';
+  document.getElementById('mpsc').style.display = 'none';
+  document.getElementById('ssc').style.display = 'none';
+}
+
+function sendWhatsApp(subject) {
+  setTimeout(function() {
+    let msg = "I have completed payment for " + subject + ". Please send password.";
+    let url = "https://wa.me/919923343791?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+  }, 3000);
+}
+
+function unlockPDF() {
+  let pass = prompt("Enter password:");
+
+  if(pass === "1234") {
+    window.open("ECM%20Unit%201%20notes.pdf", "_blank");
+  } else {
+    alert("Wrong password ❌");
+  }
+}
+</script>
+
+</body>
+</html>
